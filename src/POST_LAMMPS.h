@@ -33,6 +33,7 @@ vector<vector<double>> boundary; // 0-1:xlo,xhi  2-3:ylo,yhi  4-5:zlo,zhi  6-8:x
 string file_name; //dump file name.
 long step;
 double potim;
+
 public:
     // about constructor:
     LAMMPS_DUMP(string str="dump.atom",double p=0.1); //constructor
@@ -46,6 +47,9 @@ public:
     long show_atom_number(long s,long type) const {return atom_number[s][type];} //return atom number of i step
     long show_step() const {return step;} //return total step;
     const string & show_file_name() const {return file_name;} //return file_name;
+
+    // change private:
+    void dt(double dt) {potim=dt;}
 
     // about calculations:
     double min_image(double,double) const;
